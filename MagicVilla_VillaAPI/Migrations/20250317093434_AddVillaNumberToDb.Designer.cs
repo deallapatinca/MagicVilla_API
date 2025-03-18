@@ -4,6 +4,7 @@ using MagicVilla_VillaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla_VillaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250317093434_AddVillaNumberToDb")]
+    partial class AddVillaNumberToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,14 +62,14 @@ namespace MagicVilla_VillaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VillaNumber");
+                    b.ToTable("Villas");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Amenity = "",
-                            CreatedDate = new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(2891),
+                            CreatedDate = new DateTime(2025, 3, 17, 10, 34, 34, 8, DateTimeKind.Local).AddTicks(2986),
                             Details = "Lorem whateevr this that",
                             ImageUrl = "",
                             Name = "Royal Villa",
@@ -79,7 +82,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "Pool, Garden, Spa",
-                            CreatedDate = new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(3296),
+                            CreatedDate = new DateTime(2025, 3, 17, 10, 34, 34, 8, DateTimeKind.Local).AddTicks(3236),
                             Details = "Lorem whatever this that.",
                             ImageUrl = "https://example.com/royal_villa.jpg",
                             Name = "Royal Villa",
@@ -92,7 +95,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "Sauna, Fireplace, Hiking Trails",
-                            CreatedDate = new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(3305),
+                            CreatedDate = new DateTime(2025, 3, 17, 10, 34, 34, 8, DateTimeKind.Local).AddTicks(3244),
                             Details = "A peaceful retreat in the mountains.",
                             ImageUrl = "https://example.com/mountain_retreat.jpg",
                             Name = "Mountain Retreat",
@@ -105,7 +108,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 4,
                             Amenity = "Beach Access, Hot Tub",
-                            CreatedDate = new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(3307),
+                            CreatedDate = new DateTime(2025, 3, 17, 10, 34, 34, 8, DateTimeKind.Local).AddTicks(3247),
                             Details = "Enjoy breathtaking ocean views.",
                             ImageUrl = "https://example.com/seaside_escape.jpg",
                             Name = "Seaside Escape",
@@ -118,7 +121,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 5,
                             Amenity = "Gym, Rooftop Terrace, Bar",
-                            CreatedDate = new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(3309),
+                            CreatedDate = new DateTime(2025, 3, 17, 10, 34, 34, 8, DateTimeKind.Local).AddTicks(3249),
                             Details = "A luxurious villa in the heart of the city.",
                             ImageUrl = "https://example.com/city_oasis.jpg",
                             Name = "City Oasis",
@@ -131,7 +134,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 6,
                             Amenity = "Pool, Desert Safari, Star Gazing",
-                            CreatedDate = new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(3311),
+                            CreatedDate = new DateTime(2025, 3, 17, 10, 34, 34, 8, DateTimeKind.Local).AddTicks(3251),
                             Details = "An exotic villa amidst the desert.",
                             ImageUrl = "https://example.com/desert_mirage.jpg",
                             Name = "Desert Mirage",
@@ -144,7 +147,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 7,
                             Amenity = "Forest Trails, Yoga Studio",
-                            CreatedDate = new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(3313),
+                            CreatedDate = new DateTime(2025, 3, 17, 10, 34, 34, 8, DateTimeKind.Local).AddTicks(3253),
                             Details = "A serene escape surrounded by nature.",
                             ImageUrl = "https://example.com/forest_haven.jpg",
                             Name = "Forest Haven",
@@ -170,25 +173,9 @@ namespace MagicVilla_VillaAPI.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("VillaID")
-                        .HasColumnType("int");
-
                     b.HasKey("VillaNo");
 
-                    b.HasIndex("VillaID");
-
                     b.ToTable("VillaNumbers");
-                });
-
-            modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>
-                {
-                    b.HasOne("MagicVilla_VillaAPI.Models.Villa", "Villa")
-                        .WithMany()
-                        .HasForeignKey("VillaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }
