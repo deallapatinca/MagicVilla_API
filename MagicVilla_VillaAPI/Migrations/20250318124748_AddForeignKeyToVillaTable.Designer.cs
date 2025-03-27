@@ -180,7 +180,7 @@ namespace MagicVilla_VillaAPI.Migrations
 
                     b.HasIndex("VillaID");
 
-                    b.ToTable("VillaNumbers");
+                    b.ToTable("VillaNumber");
                 });
 
             modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>

@@ -3,12 +3,10 @@ using System.Linq.Expressions;
 
 namespace MagicVilla_VillaAPI.Repository.IRepository
 {
-    public interface IVillaNumberRepository
+    public interface IVillaNumberRepository 
     {
 
-
-
-        Task<List<VillaNumber>> GetAllAsync(Expression<Func<VillaNumber, bool>> filter = null);
+        Task<List<VillaNumber>> GetAllAsync(Expression<Func<VillaNumber, bool>> filter = null, string includeProperties = null);
         Task<VillaNumber> GetAsync(Expression<Func<VillaNumber, bool>> filter = null, bool tracked = true);
 
         Task CreateAsync(VillaNumber entity);

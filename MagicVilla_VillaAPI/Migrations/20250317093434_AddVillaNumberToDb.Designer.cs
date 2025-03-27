@@ -175,7 +175,7 @@ namespace MagicVilla_VillaAPI.Migrations
 
                     b.HasKey("VillaNo");
 
-                    b.ToTable("VillaNumbers");
+                    b.ToTable("VillaNumber");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,14 +16,14 @@ namespace MagicVilla_VillaAPI.Repository
         }
         public async Task CreateAsync(VillaNumber entity)
         {
-            await _db.VillaNumbers.AddAsync(entity);
+            await _db.VillaNumber.AddAsync(entity);
             await SaveAsync();
 
         }
 
         public async Task<VillaNumber> GetAsync(Expression<Func<VillaNumber, bool>> filter = null, bool tracked = true)
         {
-            IQueryable<VillaNumber> query = _db.VillaNumbers;
+            IQueryable<VillaNumber> query = _db.VillaNumber;
             if (!tracked)
             {
                 query = query.AsNoTracking();
@@ -36,9 +36,10 @@ namespace MagicVilla_VillaAPI.Repository
 
         }
 
-        public async Task<List<VillaNumber>> GetAllAsync(Expression<Func<VillaNumber, bool>> filter = null)
+        public async Task<List<VillaNumber>> GetAllAsync(Expression<Func<VillaNumber, bool>> filter = null, string includeProperties = null)
         {
-            IQueryable<VillaNumber> query = _db.VillaNumbers;
+            IQueryable<VillaNumber> query = includeProperties==null? _db.VillaNumber: _db.VillaNumber.Include(includeProperties);
+            
             if (filter != null)
             {
                 query = query.Where(filter);
@@ -49,7 +50,7 @@ namespace MagicVilla_VillaAPI.Repository
 
         public async Task RemoveAsync(VillaNumber entity)
         {
-            _db.VillaNumbers.Remove(entity);
+            _db.VillaNumber.Remove(entity);
             await SaveAsync();
         }
 
@@ -60,7 +61,7 @@ namespace MagicVilla_VillaAPI.Repository
         public async Task<VillaNumber> UpdateAsync(VillaNumber entity)
         {
             entity.UpdatedDate = DateTime.Now;
-            _db.VillaNumbers.Update(entity);
+            _db.VillaNumber.Update(entity);
             await _db.SaveChangesAsync();
             return entity;
         }

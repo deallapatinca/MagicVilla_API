@@ -21,7 +21,7 @@ namespace MagicVilla_VillaAPI.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "VillaID",
-                table: "VillaNumbers",
+                table: "VillaNumber",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
@@ -81,13 +81,15 @@ namespace MagicVilla_VillaAPI.Migrations
                 value: new DateTime(2025, 3, 18, 13, 47, 47, 790, DateTimeKind.Local).AddTicks(3313));
 
             migrationBuilder.CreateIndex(
+                //changedddd
                 name: "IX_VillaNumbers_VillaID",
-                table: "VillaNumbers",
+                table: "VillaNumber",
                 column: "VillaID");
 
             migrationBuilder.AddForeignKey(
+                //changedddd
                 name: "FK_VillaNumbers_VillaNumber_VillaID",
-                table: "VillaNumbers",
+                table: "VillaNumber",
                 column: "VillaID",
                 principalTable: "VillaNumber",
                 principalColumn: "Id",
@@ -97,13 +99,13 @@ namespace MagicVilla_VillaAPI.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            migrationBuilder.DropForeignKey( //changedddd
                 name: "FK_VillaNumbers_VillaNumber_VillaID",
-                table: "VillaNumbers");
+                table: "VillaNumber");
 
-            migrationBuilder.DropIndex(
+            migrationBuilder.DropIndex( //changedddd
                 name: "IX_VillaNumbers_VillaID",
-                table: "VillaNumbers");
+                table: "VillaNumber");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_VillaNumber",
@@ -111,7 +113,7 @@ namespace MagicVilla_VillaAPI.Migrations
 
             migrationBuilder.DropColumn(
                 name: "VillaID",
-                table: "VillaNumbers");
+                table: "VillaNumber");
 
             migrationBuilder.RenameTable(
                 name: "VillaNumber",

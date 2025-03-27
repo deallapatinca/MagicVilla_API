@@ -15,97 +15,69 @@ namespace MagicVilla_VillaAPI.Data
         {
 
         }
+        public DbSet<LocalUser> LocalUsers { get; set; }
+
         public DbSet<Villa> Villas { get; set; }
-        public DbSet<VillaNumber> VillaNumbers { get; set; }
+        public DbSet<VillaNumber> VillaNumber { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Villa>().HasData(
-            new Villa
-            {
-                Id = 1,
-                Name = "Royal Villa",
-                Details = "Lorem whateevr this that",
-                ImageUrl = "",
-                Occupancy = 5,
-                Rate = 200,
-                Sqft = 550,
-                Amenity = "",
-                CreatedDate = DateTime.Now
-
-            },
-            new Villa
-            {
-                Id = 2,
-                Name = "Royal Villa",
-                Details = "Lorem whatever this that.",
-                ImageUrl = "https://example.com/royal_villa.jpg",
-                Occupancy = 5,
-                Rate = 200,
-                Sqft = 550,
-                Amenity = "Pool, Garden, Spa",
-                CreatedDate = DateTime.Now
-            },
-            new Villa
-            {
-                Id = 3,
-                Name = "Mountain Retreat",
-                Details = "A peaceful retreat in the mountains.",
-                ImageUrl = "https://example.com/mountain_retreat.jpg",
-                Occupancy = 4,
-                Rate = 250,
-                Sqft = 450,
-                Amenity = "Sauna, Fireplace, Hiking Trails",
-                CreatedDate = DateTime.Now
-            },
-            new Villa
-            {
-                Id = 4,
-                Name = "Seaside Escape",
-                Details = "Enjoy breathtaking ocean views.",
-                ImageUrl = "https://example.com/seaside_escape.jpg",
-                Occupancy = 6,
-                Rate = 300,
-                Sqft = 600,
-                Amenity = "Beach Access, Hot Tub",
-                CreatedDate = DateTime.Now
-            },
-            new Villa      
-            {
-                Id = 5,
-                Name = "City Oasis",
-                Details = "A luxurious villa in the heart of the city.",
-                ImageUrl = "https://example.com/city_oasis.jpg",
-                Occupancy = 3,
-                Rate = 180,
-                Sqft = 400,
-                Amenity = "Gym, Rooftop Terrace, Bar",
-                CreatedDate = DateTime.Now
-            },
-            new Villa
-            {
-                Id = 6,
-                Name = "Desert Mirage",
-                Details = "An exotic villa amidst the desert.",
-                ImageUrl = "https://example.com/desert_mirage.jpg",
-                Occupancy = 4,
-                Rate = 220,
-                Sqft = 500,
-                Amenity = "Pool, Desert Safari, Star Gazing",
-                CreatedDate = DateTime.Now
-            },
-            new Villa   
-            {
-                Id = 7,
-                Name = "Forest Haven",
-                Details = "A serene escape surrounded by nature.",
-                ImageUrl = "https://example.com/forest_haven.jpg",
-                Occupancy = 7,
-                Rate = 275,
-                Sqft = 650,
-                Amenity = "Forest Trails, Yoga Studio",
-                CreatedDate = DateTime.Now
-            }
+           new Villa
+           {
+               Id = 1,
+               Name = "Royal Villa",
+               Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+               ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa3.jpg",
+               Occupancy = 4,
+               Rate = 200,
+               Sqft = 550,
+               Amenity = ""
+           },
+              new Villa
+              {
+                  Id = 2,
+                  Name = "Premium Pool Villa",
+                  Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                  ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa1.jpg",
+                  Occupancy = 4,
+                  Rate = 300,
+                  Sqft = 550,
+                  Amenity = ""
+              },
+              new Villa
+              {
+                  Id = 3,
+                  Name = "Luxury Pool Villa",
+                  Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                  ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa4.jpg",
+                  Occupancy = 4,
+                  Rate = 400,
+                  Sqft = 750,
+                  Amenity = ""
+              },
+              new Villa
+              {
+                  Id = 4,
+                  Name = "Diamond Villa",
+                  Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                  ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa5.jpg",
+                  Occupancy = 4,
+                  Rate = 550,
+                  Sqft = 900,
+                  Amenity = ""
+              },
+              new Villa
+              {
+                  Id = 5,
+                  Name = "Diamond Pool Villa",
+                  Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                  ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa2.jpg",
+                  Occupancy = 4,
+                  Rate = 600,
+                  Sqft = 1100,
+                  Amenity = ""
+              }
 
             );
         }

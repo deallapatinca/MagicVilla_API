@@ -12,7 +12,7 @@ namespace MagicVilla_VillaAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "VillaNumbers",
+                name: "VillaNumber",
                 columns: table => new
                 {
                     VillaNo = table.Column<int>(type: "int", nullable: false),
@@ -21,7 +21,7 @@ namespace MagicVilla_VillaAPI.Migrations
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
-                {
+                { //changedddd
                     table.PrimaryKey("PK_VillaNumbers", x => x.VillaNo);
                 });
 
@@ -79,7 +79,7 @@ namespace MagicVilla_VillaAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "VillaNumbers");
+                name: "VillaNumber");
 
             migrationBuilder.UpdateData(
                 table: "Villas",

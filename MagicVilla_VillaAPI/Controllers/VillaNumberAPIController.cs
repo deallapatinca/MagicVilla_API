@@ -12,7 +12,7 @@ using System.Net;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
-    [Route("api/VillaNumberAPI")]
+    [Route("api/villaNumberAPI")]
     [ApiController]
     public class VillaNumberAPIController : ControllerBase
     {
@@ -33,13 +33,15 @@ namespace MagicVilla_VillaAPI.Controllers
         {
             try
             {
-                IEnumerable<VillaNumber> villaNumberList = await _dbVillaNumber.GetAllAsync();
+                IEnumerable<VillaNumber> villaNumberList = await _dbVillaNumber.GetAllAsync(includeProperties: "Villa");
                 _response.Result = _mapper.Map<List<VillaNumberDTO>>(villaNumberList);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error: {ex.Message}"); // Debugging output
+
                 _response.IsSuccess = false;
                 _response.ErrorsMessages = new List<string>() { ex.ToString() };
             }
@@ -90,12 +92,12 @@ namespace MagicVilla_VillaAPI.Controllers
             {
                 if (await _dbVillaNumber.GetAsync(u => u.VillaNo == createDTO.VillaNo) != null)
                 {
-                    ModelState.AddModelError("CustomError", "Villa Number already Exists!");
+                    ModelState.AddModelError("ErrorsMessages", "Villa Number already Exists!");
                     return BadRequest(ModelState);
                 }
                 if (await _dbVilla.GetAsync(u => u.Id == createDTO.VillaID) == null)
                 {
-                    ModelState.AddModelError("CustomError", "Villa with given ID does not exists!");
+                    ModelState.AddModelError("ErrorsMessages", "Villa with given ID does not exists!");
                     return BadRequest(ModelState);
                 }
                 if (createDTO == null)
@@ -164,7 +166,7 @@ namespace MagicVilla_VillaAPI.Controllers
                 }
                 if (await _dbVilla.GetAsync(u => u.Id == updateDTO.VillaID) == null)
                 {
-                    ModelState.AddModelError("CustomError", "Villa with given ID does not exists!");
+                    ModelState.AddModelError("ErrorsMessages", "Villa with given ID does not exists!");
                     return BadRequest(ModelState);
                 }
 
