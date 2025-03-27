@@ -6,7 +6,6 @@ namespace MagicVilla_VillaAPI.Models
     public class LocalUser
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
