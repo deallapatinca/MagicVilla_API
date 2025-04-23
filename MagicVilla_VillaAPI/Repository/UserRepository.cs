@@ -2,7 +2,10 @@
 using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.Dto;
 using MagicVilla_VillaAPI.Repository.IRepository;
+using Microsoft.IdentityModel.Tokens;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 namespace MagicVilla_VillaAPI.Repository
@@ -28,18 +31,34 @@ namespace MagicVilla_VillaAPI.Repository
             return false;
         }
 
-        public async Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO)
+        public Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO)
         {
-            var user = _db.LocalUsers.FirstOrDefault(u => u.UserName == loginRequestDTO.UserName.ToLower() && u.Password == loginRequestDTO.Password);
-            if (user == null)
-            {
-                return null;
-            }
-
-            //if user was found generate JWT Token
-            var tokenHandle = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(secretKey);
+            throw new NotImplementedException();
         }
+
+        //public async Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO)
+        //{
+        //    var user = _db.LocalUsers.FirstOrDefault(u => u.UserName == loginRequestDTO.UserName.ToLower() && u.Password == loginRequestDTO.Password);
+        //    if (user == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    //if user was found generate JWT Token
+        //    var tokenHandle = new JwtSecurityTokenHandler();
+        //    var key = Encoding.ASCII.GetBytes(secretKey);
+
+        //    //var tokenDescritor = new SecurityTokenDescriptor
+        //    //{
+        //    //    Subject = ClaimsIdentity(new Claim[]
+        //    //    {
+        //    //        new Claim(ClaimTypes.Name, user.Id.ToString()),
+        //    //        new Claim(ClaimTypes.Role, user.Role)
+        //    //    }),
+        //    //    Expires = DataSetDateTime.Utc.AddDays(7),
+        //    //    SigningCredentials = new(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        //    //};
+        //}
 
         public async Task<LocalUser> Register(RegistrationRequestDTO registrationRequestDTO)
         {
