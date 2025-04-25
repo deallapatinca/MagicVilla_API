@@ -25,7 +25,10 @@ namespace MagicVilla_VillaAPI.Migrations
             modelBuilder.Entity("MagicVilla_VillaAPI.Models.LocalUser", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
