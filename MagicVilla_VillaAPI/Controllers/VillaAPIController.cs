@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using MagicVilla_VillaAPI.Repository.IRepository;
 using System.Runtime.CompilerServices;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 namespace MagicVilla_VillaAPI.Controllers
 
 {
@@ -29,6 +30,7 @@ namespace MagicVilla_VillaAPI.Controllers
 
         }
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
@@ -51,6 +53,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult<APIResponse>> GetVilla(int id)
         {
 
@@ -119,6 +122,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = "CUSTOM")]
         [HttpDelete("{id:int}", Name = "DeleteVilla")]
         public async Task<ActionResult<APIResponse>> DeleteVilla(int id)
         {
